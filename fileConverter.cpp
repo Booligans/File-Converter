@@ -5,27 +5,27 @@ using namespace std;
 
 
 int main() {
-	ifstream archivoLectura;
-	ofstream archivoEscritura;
-	string nombreCompleto, nombreNuevo, linea;
-	cout << "Dame un archivo a convertir (con terminacion): ";
-	cin >> nombreCompleto;
-	cout << "Dame el nombre del nuevo archivo (con terminacion): ";
-	cin >> nombreNuevo;
-	archivoLectura.open(nombreCompleto);
+	ifstream readFile;
+	ofstream writeFile;
+	string filename, newName, line;
+	cout << "Introduce file to convert (with filename extension): ";
+	cin >> filename;
+	cout << "Introduce the new name of the file (with filename extension): ";
+	cin >> newName;
+	readFile.open(filename);
 
-	if (!archivoLectura.is_open()) {
-		cout << "No se pudo abrir el archivo \n";
-			system("pause");
+	if (!readFile.is_open()) {
+		cout << "The file could not be opened \n";
+		system("pause");
 	}
 	else {
-		archivoEscritura.open(nombreNuevo);
-		while (!archivoLectura.eof()) {
-			getline(archivoLectura, linea);
-			archivoEscritura << linea;
+		writeFile.open(newName);
+		while (!readFile.eof()) {
+			getline(readFile, line);
+			writeFile << line;
 		}
-		archivoEscritura.close();
+		writeFile.close();
 	}
-	archivoLectura.close();
+	readFile.close();
 	return 0;
 }
